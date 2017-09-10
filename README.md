@@ -11,7 +11,7 @@ optional arguments:
   --path_to_makefile PATH_TO_MAKEFILE, -i PATH_TO_MAKEFILE
                         Path to CubeMX generated Makefile
   --path_to_output_directory PATH_TO_OUTPUT_DIRECTORY, -o PATH_TO_OUTPUT_DIRECTORY
-                        Path to otuput directory of CMakeists.txt
+                        Path to otuput directory of CMakeLists.txt
 ```
 ## LICENSE
 see LICENSE
