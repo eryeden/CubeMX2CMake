@@ -87,6 +87,7 @@ set(BIN_FILE ${CMAKE_BINARY_DIR}/${PROJECT_NAME}.bin)
 add_custom_command(TARGET ${PROJECT_NAME}.elf POST_BUILD
         COMMAND ${OBJCP} -O ihex $<TARGET_FILE:${PROJECT_NAME}.elf> ${HEX_FILE}
         COMMAND ${OBJCP} -O binary -S $<TARGET_FILE:${PROJECT_NAME}.elf> ${BIN_FILE}
+        COMMAND make -C ${PROJECT_SOURCE_DIR} -f ${PROJECT_SOURCE_DIR}/Makefile
         COMMENT "Building ${HEX_FILE} \nBuilding ${BIN_FILE}")
 
 
