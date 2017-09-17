@@ -16,7 +16,7 @@ class makefileInjectant:
         self.injectant = """print-%:
 	@echo '$($*)'"""
         self.path_to_injectant =\
-            '.__'+''.join([random.choice(string.ascii_lowercase + string.ascii_uppercase + string.digits) for i in range(10)])\
+            os.getcwd() + '/.__'+''.join([random.choice(string.ascii_lowercase + string.ascii_uppercase + string.digits) for i in range(10)])\
              + '.mk'
         f = open(self.path_to_injectant, 'w')
         f.write(self.injectant)
@@ -32,7 +32,7 @@ def getMakefileVariableText(path_to_makefile_, variable_):
     path_to_injectant = inj.getPathToInjectant()
     # print(path_to_injectant)
     ord_val = 'print-' + variable_
-    mkout = subprocess.check_output(['make', '-f', path_to_injectant, '-f', path_to_makefile_, ord_val]).decode('utf8')
+    mkout = subprocess.check_output(['make','-C', os.path.dirname(path_to_makefile_),  '-f', path_to_injectant, '-f', path_to_makefile_, ord_val]).decode('utf8')
     return mkout
 
 # Makefileへのパスと変数名から，変数内容を配列で出力
